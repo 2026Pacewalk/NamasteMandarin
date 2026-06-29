@@ -1,21 +1,22 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useContent } from '../lib/content';
 
-const heroImages = [
-  '/assets/banner-2.jpg',
-  '/assets/banner2.jpg',
-  '/assets/banner1.jpg',
-];
+const DEFAULT_HERO = ['/assets/banner-2.jpg', '/assets/banner2.jpg', '/assets/banner1.jpg'];
 
 export default function HeroSection() {
+  const content = useContent();
+  const heroImages =
+    content?.settings?.hero_banners?.length ? content.settings.hero_banners : DEFAULT_HERO;
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
+    setCurrent((c) => (c < heroImages.length ? c : 0));
     const timer = setInterval(() => {
       setCurrent((c) => (c + 1) % heroImages.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [heroImages.length]);
 
   const next = () => setCurrent((c) => (c + 1) % heroImages.length);
   const prev = () => setCurrent((c) => (c - 1 + heroImages.length) % heroImages.length);

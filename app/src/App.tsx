@@ -17,11 +17,16 @@ import TestimonialsPage from './pages/TestimonialsPage';
 import GalleryPage from './pages/GalleryPage';
 import NewsPage from './pages/NewsPage';
 import ContactPage from './pages/ContactPage';
+import SitemapPage from './pages/SitemapPage';
 import NotFoundPage from './pages/NotFoundPage';
+import AdminApp from './admin/AdminApp';
 
 function App() {
   return (
     <Routes>
+      {/* Admin panel — outside the public layout */}
+      <Route path="/admin/*" element={<AdminApp />} />
+
       <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
 
@@ -48,6 +53,7 @@ function App() {
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/news-and-articles" element={<NewsPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/sitemap" element={<SitemapPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Route>

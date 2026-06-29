@@ -98,6 +98,40 @@ ufw allow OpenSSH
 
 ---
 
+## 7. Dynamic CMS backend (first-time setup)
+
+The site is backed by a small Node + SQLite API so a single admin can edit
+content at **https://namastemandarin.com/admin**. The Nginx config above already
+proxies `/api` and `/uploads` to it.
+
+```bash
+cd /opt/NamasteMandarin/server
+npm ci --omit=dev
+
+# Create the env file and set a STRONG admin password + a long random secret
+cp .env.example .env
+nano .env          # set ADMIN_USERNAME, ADMIN_PASSWORD, JWT_SECRET
+
+# Install & start the service (auto-starts on boot, restarts on crash)
+sudo cp /opt/NamasteMandarin/deploy/namaste-api.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now namaste-api
+sudo systemctl status namaste-api --no-pager     # should be "active (running)"
+```
+
+The database (SQLite) and uploaded images live in `server/data/` and
+`server/uploads/` — both are git-ignored, so your content persists across
+deploys and is never overwritten.
+
+> ⚠️ Change `ADMIN_PASSWORD` and `JWT_SECRET` in `server/.env` from the defaults —
+> this single account controls all site content. After editing `.env`, run
+> `sudo systemctl restart namaste-api`.
+
+Log in at **/admin** to manage Testimonials, News & Articles, Gallery, Hero
+banners, Contact info, and About text.
+
+---
+
 ## Updating the site later
 
 Whenever you push new changes to GitHub:
@@ -107,4 +141,5 @@ cd /opt/NamasteMandarin
 sudo bash deploy/deploy.sh
 ```
 
-That pulls, rebuilds, republishes, and reloads Nginx.
+That pulls, rebuilds & republishes the frontend, installs API deps, restarts the
+`namaste-api` service, and reloads Nginx. Your content in the database is preserved.

@@ -1,6 +1,19 @@
 import PageHero from '../components/PageHero';
+import { useContent } from '../lib/content';
+
+const DEFAULT_ABOUT = {
+  intro:
+    'Namaste Mandarin is a Chinese language training institute. We are committed towards promoting Mandarin among the student community & working professionals. We have strong experience in teaching children, coaching working professionals & in content development for virtual training programs.',
+  mission:
+    'Our Mission is to teach Chinese language through easy and simple methods yet cover all important aspects of the language and to provide high quality Chinese language courses to non-native speakers.',
+  vision:
+    'Our Vision is to reach majority of people who are interested in learning Chinese language through modern educational technologies.',
+};
 
 export default function AboutUsPage() {
+  const content = useContent();
+  const about = content?.settings?.about || DEFAULT_ABOUT;
+
   return (
     <>
       <PageHero title="About Us" image="/assets/slider2.jpg" />
@@ -12,23 +25,9 @@ export default function AboutUsPage() {
           </h2>
 
           <div className="space-y-6 text-nm-black/80 text-base lg:text-lg leading-relaxed">
-            <p>
-              <strong className="text-nm-black">Namaste Mandarin</strong> is a Chinese language
-              training institute. We are committed towards promoting Mandarin among the student
-              community &amp; working professionals. We have strong experience in teaching children,
-              coaching working professionals &amp; in content development for virtual training
-              programs.
-            </p>
-            <p>
-              <strong className="text-nm-black">Our Mission</strong> is to teach Chinese language
-              through easy and simple methods yet cover all important aspects of the language and to
-              provide high quality Chinese language courses to non-native speakers.
-            </p>
-            <p>
-              <strong className="text-nm-black">Our Vision</strong> is to reach majority of people
-              who are interested in learning Chinese language through modern educational
-              technologies.
-            </p>
+            <p>{about.intro}</p>
+            <p>{about.mission}</p>
+            <p>{about.vision}</p>
           </div>
         </div>
       </section>

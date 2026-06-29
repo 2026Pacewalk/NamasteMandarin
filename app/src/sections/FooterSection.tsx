@@ -30,7 +30,7 @@ const footerLinks = {
     { label: 'Contact', to: '/contact' },
     { label: 'Gallery', to: '/gallery' },
     { label: 'Certificates', to: '/certificates' },
-    { label: 'Testimonials', to: '/testimonials' },
+    { label: 'Sitemap', to: '/sitemap' },
   ],
 };
 

@@ -1,8 +1,22 @@
 import { Phone, Mail, Facebook, Instagram, Youtube } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import ContactSection from '../sections/ContactSection';
+import { useContent } from '../lib/content';
+
+const DEFAULT_CONTACT = {
+  phone: '+91 98806 87766',
+  email: 'namastemandarin@gmail.com',
+  whatsapp: 'https://wa.me/+919880687766',
+  facebook: 'https://www.facebook.com/people/Namaste-Mandarin/100063924019806/',
+  instagram: 'https://www.instagram.com/namaste_mandarin',
+  youtube: 'https://www.youtube.com/@namastemandarin7160',
+};
 
 export default function ContactPage() {
+  const content = useContent();
+  const c = content?.settings?.contact || DEFAULT_CONTACT;
+  const telHref = `tel:${c.phone.replace(/[^0-9+]/g, '')}`;
+
   return (
     <>
       <PageHero title="Contact Us" image="/assets/hpchem-contact.jpg" />
@@ -17,30 +31,30 @@ export default function ContactPage() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 mt-8">
             <a
-              href="tel:+919880687766"
+              href={telHref}
               className="flex items-center gap-3 text-nm-black/80 hover:text-nm-red transition-colors"
             >
               <span className="w-11 h-11 rounded-full bg-nm-red/10 flex items-center justify-center">
                 <Phone className="text-nm-red" size={20} />
               </span>
-              +91 98806 87766
+              {c.phone}
             </a>
             <a
-              href="mailto:namastemandarin@gmail.com"
+              href={`mailto:${c.email}`}
               className="flex items-center gap-3 text-nm-black/80 hover:text-nm-red transition-colors"
             >
               <span className="w-11 h-11 rounded-full bg-nm-red/10 flex items-center justify-center">
                 <Mail className="text-nm-red" size={20} />
               </span>
-              namastemandarin@gmail.com
+              {c.email}
             </a>
           </div>
 
           <div className="flex items-center justify-center gap-4 mt-8">
             {[
-              { Icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/people/Namaste-Mandarin/100063924019806/' },
-              { Icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/namaste_mandarin' },
-              { Icon: Youtube, label: 'Youtube', href: 'https://www.youtube.com/@namastemandarin7160' },
+              { Icon: Facebook, label: 'Facebook', href: c.facebook },
+              { Icon: Instagram, label: 'Instagram', href: c.instagram },
+              { Icon: Youtube, label: 'Youtube', href: c.youtube },
             ].map(({ Icon, label, href }) => (
               <a
                 key={label}

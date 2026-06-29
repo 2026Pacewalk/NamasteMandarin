@@ -4,10 +4,11 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
+import { useContent } from '../lib/content';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const articles = [
+const DEFAULT_NEWS = [
   {
     title: 'IIT Ropar to start certificate course',
     excerpt: 'IIT Ropar is starting a certificate course in Mandarin. It has also opened a Taiwan Education Centre on its campus to facilitate cooperation among the higher educational institutions of Taiwan and India...',
@@ -41,6 +42,8 @@ const articles = [
 ];
 
 export default function NewsSection({ limit }: { limit?: number }) {
+  const content = useContent();
+  const articles = content?.news?.length ? content.news : DEFAULT_NEWS;
   const visibleArticles = limit ? articles.slice(0, limit) : articles;
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);

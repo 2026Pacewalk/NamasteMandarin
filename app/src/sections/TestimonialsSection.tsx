@@ -4,10 +4,11 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Quote, Star, ArrowRight } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
+import { useContent } from '../lib/content';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const testimonials = [
+const DEFAULT_TESTIMONIALS = [
   {
     quote: "All my apprehension of undergoing a virtual class “via skype” and that too a foreign language class, was laid to rest. The module is very well conceived and the time for the course and each class was appropriate and a beginner like me was not rushed. Credit goes to Sonia, who not only has the knowledge but very good teaching skills. Appreciate the dedication shown and the immense patience. I am happy I took the class with Sonia and also happy that I opted it via skype, saved me all the time trouble of commuting. This was just like physically attending any class and never felt like a virtual class.",
     name: "Suresh Kumar",
@@ -88,7 +89,9 @@ function initials(name: string) {
 export default function TestimonialsSection({ limit }: { limit?: number }) {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
-  const items = limit ? testimonials.slice(0, limit) : testimonials;
+  const content = useContent();
+  const all = content?.testimonials?.length ? content.testimonials : DEFAULT_TESTIMONIALS;
+  const items = limit ? all.slice(0, limit) : all;
 
   useLayoutEffect(() => {
     const section = sectionRef.current;

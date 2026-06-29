@@ -1,0 +1,20 @@
+# systemd unit for the Namaste Mandarin CMS API
+# Install:  sudo cp deploy/namaste-api.service /etc/systemd/system/namaste-api.service
+#           sudo systemctl daemon-reload && sudo systemctl enable --now namaste-api
+# (Adjust WorkingDirectory/ExecStart paths if you cloned somewhere other than /opt/NamasteMandarin)
+
+[Unit]
+Description=Namaste Mandarin CMS API
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/NamasteMandarin/server
+ExecStart=/usr/bin/node --env-file=/opt/NamasteMandarin/server/.env src/index.js
+Restart=on-failure
+RestartSec=3
+Environment=NODE_ENV=production
+User=root
+
+[Install]
+WantedBy=multi-user.target
