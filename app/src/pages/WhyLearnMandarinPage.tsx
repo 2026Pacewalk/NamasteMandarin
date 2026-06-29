@@ -1,4 +1,5 @@
 import PageHero from '../components/PageHero';
+import SectionHeading from '../components/SectionHeading';
 
 const paras = [
   'It has been claimed that ‘those who do not speak Chinese are not ready for the 21st century’. A bold statement perhaps, but with many employers and companies across the globe seeking to establish relationships and develop key business links with China, Mandarin Chinese has indeed become a very valuable and highly sought after language skill in today’s world.',
@@ -19,13 +20,29 @@ export default function WhyLearnMandarinPage() {
 
       <section className="bg-white py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6">
-          <h2 className="font-display text-[clamp(26px,3vw,40px)] text-nm-black font-semibold mb-2 text-center">
-            Why Mandarin?
-          </h2>
-          <p className="text-nm-red text-center font-medium mb-10">Importance of Mandarin Language</p>
-          <div className="space-y-5 text-nm-black/75 text-base leading-relaxed">
+          <div className="mb-10">
+            <SectionHeading kicker="Importance of Mandarin" title="Why Mandarin?" />
+          </div>
+
+          {/* Pull-quote */}
+          <blockquote className="relative bg-ivory border-l-4 border-nm-gold rounded-r-2xl px-6 py-5 mb-10">
+            <p className="font-display text-xl lg:text-2xl text-nm-black/85 italic leading-snug">
+              “Those who do not speak Chinese are not ready for the 21st century.”
+            </p>
+          </blockquote>
+
+          <div className="space-y-5">
             {paras.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p
+                key={i}
+                className={
+                  i === 0
+                    ? 'text-nm-black/85 text-lg leading-relaxed'
+                    : 'text-nm-black/70 text-base leading-relaxed'
+                }
+              >
+                {p}
+              </p>
             ))}
           </div>
         </div>

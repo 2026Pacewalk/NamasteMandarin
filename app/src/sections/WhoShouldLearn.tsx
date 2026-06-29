@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight } from 'lucide-react';
+import SectionHeading from '../components/SectionHeading';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,13 +70,11 @@ export default function WhoShouldLearn() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="about-mandarin" className="section-flowing bg-white py-16 lg:py-24">
+    <section ref={sectionRef} id="about-mandarin" className="section-flowing bg-ivory py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-6 lg:px-12">
         {/* Title */}
-        <div ref={titleRef} className="text-center mb-10 lg:mb-14">
-          <h2 className="font-display text-[clamp(28px,3.2vw,48px)] text-nm-black font-semibold">
-            Who Should Learn Mandarin?
-          </h2>
+        <div ref={titleRef} className="mb-12 lg:mb-16">
+          <SectionHeading kicker="Is It For You?" title="Who Should Learn Mandarin?" />
         </div>
 
         {/* Cards Grid - 2x2 */}
@@ -83,9 +82,9 @@ export default function WhoShouldLearn() {
           {audiences.map((item, i) => (
             <div
               key={i}
-              className="audience-card border border-gray-200 rounded-2xl p-5 flex gap-5 hover:shadow-md transition-shadow"
+              className="audience-card card-premium p-6 flex gap-5"
             >
-              <div className="w-24 h-24 flex-shrink-0 flex items-center justify-center bg-gray-50 rounded-xl">
+              <div className="w-24 h-24 flex-shrink-0 flex items-center justify-center bg-nm-red/5 rounded-2xl ring-1 ring-nm-red/10">
                 <img
                   src={item.image}
                   alt={item.alt}

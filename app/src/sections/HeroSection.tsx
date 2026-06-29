@@ -26,17 +26,21 @@ export default function HeroSection() {
       {heroImages.map((img, i) => (
         <div
           key={i}
-          className={`absolute inset-0 transition-opacity duration-700 ${
+          className={`absolute inset-0 transition-opacity duration-[1200ms] ease-out ${
             i === current ? 'opacity-100' : 'opacity-0'
           }`}
         >
           <img
             src={img}
             alt="Namaste Mandarin"
-            className="w-full h-full object-cover"
+            className={`w-full h-full object-cover ${i === current ? 'kenburns' : ''}`}
           />
         </div>
       ))}
+
+      {/* Cinematic gradient scrim for depth + control legibility */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/45 via-transparent to-black/15" />
+      <div className="absolute inset-x-0 bottom-0 h-24 pointer-events-none bg-gradient-to-t from-nm-red/30 to-transparent" />
 
       {/* Navigation Arrows */}
       <button
@@ -60,8 +64,9 @@ export default function HeroSection() {
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className={`w-2.5 h-2.5 rounded-full transition-colors ${
-              i === current ? 'bg-white' : 'bg-white/50'
+            aria-label={`Go to slide ${i + 1}`}
+            className={`h-2.5 rounded-full transition-all duration-300 ${
+              i === current ? 'w-7 bg-nm-gold' : 'w-2.5 bg-white/60 hover:bg-white'
             }`}
           />
         ))}

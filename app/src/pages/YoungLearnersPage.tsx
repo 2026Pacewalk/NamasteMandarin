@@ -4,6 +4,7 @@ export default function YoungLearnersPage() {
   return (
     <ContentPage
       title="Young Learners/Students"
+      kicker="For Children"
       heading="Young Learners/Students"
       image="/assets/g33-big.jpg"
       paragraphs={[

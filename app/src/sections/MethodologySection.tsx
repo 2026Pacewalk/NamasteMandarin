@@ -61,35 +61,37 @@ export default function MethodologySection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="methodology" className="section-flowing bg-white py-16 lg:py-24">
+    <section ref={sectionRef} id="methodology" className="section-flowing bg-white py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left - Image */}
           <div ref={imageRef} className="will-change-transform">
-            <div className="rounded-2xl overflow-hidden shadow-lg">
+            <div className="relative rounded-3xl overflow-hidden shadow-[0_30px_60px_-30px_rgba(11,11,11,0.45)]">
               <img
                 src="/assets/Teaching-Methodology.png"
                 alt="Teaching Methodology"
                 className="w-full h-auto object-cover"
               />
+              <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-3xl" />
             </div>
           </div>
 
           {/* Right - Text */}
           <div ref={textRef} className="will-change-transform">
-            <h2 className="font-display text-[clamp(28px,3.2vw,48px)] text-nm-black font-semibold mb-6">
+            <span className="kicker kicker-start mb-4">How We Teach</span>
+            <h2 className="font-display text-[clamp(28px,3.3vw,48px)] text-nm-black font-semibold">
               Teaching Methodology
             </h2>
+            <div className="gold-rule mt-5 mb-8" />
 
-            <div className="space-y-4">
+            <div className="space-y-5">
               {methods.map((method, i) => (
-                <div key={i}>
-                  <span className="text-nm-red font-semibold text-sm">
-                    {method.title}:
-                  </span>{' '}
-                  <span className="text-nm-black/70 text-sm leading-relaxed">
-                    {method.desc}
-                  </span>
+                <div key={i} className="flex gap-4">
+                  <span className="mt-1.5 flex-shrink-0 w-2 h-2 rounded-full bg-nm-gold ring-4 ring-nm-gold/15" />
+                  <p className="text-sm leading-relaxed">
+                    <span className="text-nm-red font-semibold">{method.title}:</span>{' '}
+                    <span className="text-nm-black/70">{method.desc}</span>
+                  </p>
                 </div>
               ))}
             </div>

@@ -1,4 +1,5 @@
 import PageHero from '../components/PageHero';
+import SectionHeading from '../components/SectionHeading';
 
 const blocks = [
   {
@@ -26,22 +27,22 @@ export default function IntroductionPage() {
 
       <section className="bg-white py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6">
-          <h2 className="font-display text-[clamp(26px,3vw,40px)] text-nm-black font-semibold mb-6 text-center">
-            About Mandarin
-          </h2>
-          <p className="text-nm-black/75 text-base lg:text-lg leading-relaxed text-center max-w-3xl mx-auto">
-            Mandarin is the most widely spoken language in the world with over 1.2 billion speakers.
-            The Chinese language can be heard throughout the world — it is the official language of
-            Mainland China, Taiwan &amp; one of the official languages of Singapore. It is one of the
-            6 official languages of the United Nations. It is no wonder that millions of people are
-            investing in learning this language!!
-          </p>
+          <SectionHeading
+            kicker="The Language"
+            title="About Mandarin"
+            subtitle="Mandarin is the most widely spoken language in the world with over 1.2 billion speakers. It is the official language of Mainland China, Taiwan & one of the official languages of Singapore — and one of the 6 official languages of the United Nations. No wonder millions of people are investing in learning it."
+          />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            {blocks.map((b) => (
-              <div key={b.title} className="bg-gray-50 rounded-2xl p-7 border border-gray-100">
-                <h3 className="font-body text-lg text-nm-red font-semibold mb-2">{b.title}</h3>
-                <p className="text-nm-black/70 text-sm leading-relaxed">{b.body}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-14">
+            {blocks.map((b, i) => (
+              <div key={b.title} className="card-premium p-7">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="w-9 h-9 rounded-xl bg-nm-red/8 text-nm-red font-display font-bold flex items-center justify-center">
+                    {i + 1}
+                  </span>
+                  <h3 className="font-body text-lg text-nm-black font-semibold">{b.title}</h3>
+                </div>
+                <p className="text-nm-black/65 text-sm leading-relaxed">{b.body}</p>
               </div>
             ))}
           </div>

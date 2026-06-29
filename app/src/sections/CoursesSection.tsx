@@ -2,6 +2,7 @@ import { useRef, useLayoutEffect } from 'react';
 import { Link } from 'react-router';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SectionHeading from '../components/SectionHeading';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -9,7 +10,7 @@ const courses = [
   { title: 'Young Learners/Students', image: '/assets/Young-Learners-Students.png', to: '/young-learners-students' },
   { title: 'Working Professionals', image: '/assets/Working-Professionals-1.jpg', to: '/working-professionals' },
   { title: 'Corporate Training', image: '/assets/Corporate-Training-2.jpg', to: '/corporate-training' },
-  { title: 'Online Courses', image: '/assets/online-courses-2.jpg', to: 'http://courses.namastemandarin.com/' },
+  { title: 'Online Courses', image: '/assets/online-courses-2.jpg', to: 'https://namastemandarin.ongraphy.com/' },
 ];
 
 export default function CoursesSection() {
@@ -48,15 +49,12 @@ export default function CoursesSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="courses" className="section-flowing bg-nm-red star-bg py-16 lg:py-24">
+    <section ref={sectionRef} id="courses" className="section-flowing bg-red-rich star-bg py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-6 lg:px-12">
         {/* Title */}
-        <h2
-          ref={titleRef}
-          className="text-center font-display text-[clamp(32px,3.5vw,52px)] text-white font-semibold mb-10 lg:mb-14"
-        >
-          Our Courses
-        </h2>
+        <div ref={titleRef} className="mb-12 lg:mb-16">
+          <SectionHeading kicker="What We Offer" title="Our Courses" tone="dark" />
+        </div>
 
         {/* Course Cards Grid - 2x2 */}
         <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -35,23 +35,22 @@ export default function AboutSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="about" className="section-flowing bg-nm-red py-16 lg:py-24">
-      <div ref={contentRef} className="max-w-4xl mx-auto px-6 text-center">
-        <h2 className="animate-item font-display text-[clamp(32px,3.5vw,52px)] text-white font-semibold mb-2">
-          About Us
-        </h2>
-        <p className="animate-item font-display text-lg text-white/80 mb-8">
+    <section ref={sectionRef} id="about" className="section-flowing bg-red-rich star-bg py-20 lg:py-28">
+      <div ref={contentRef} className="max-w-3xl mx-auto px-6 text-center">
+        <span className="animate-item kicker text-nm-gold-light mb-5">About Us</span>
+        <h2 className="animate-item font-display text-[clamp(32px,3.6vw,52px)] text-white font-semibold">
           Who we are and What we do?
+        </h2>
+        <div className="animate-item gold-rule mx-auto mt-6 mb-8" />
+        <p className="animate-item text-white/85 text-[clamp(15px,1.15vw,18px)] leading-relaxed">
+          <strong className="text-white">Namaste Mandarin</strong> is a Chinese language training institute.
+          We are committed towards promoting Mandarin among the student community &amp; working professionals.
+          We have strong experience in teaching children, coaching working professionals &amp; in content
+          development for virtual training programs.
         </p>
-        <p className="animate-item text-white/85 text-[clamp(14px,1.1vw,17px)] leading-relaxed">
-          <strong className="text-white">Namaste Mandarin</strong> is a Chinese language training institute. 
-          We are committed towards promoting Mandarin among the student community & working professionals. 
-          We have strong experience in teaching children, coaching working professionals & in content 
-          development for virtual training programs
-        </p>
-        <div className="animate-item mt-4">
-          <Link to="/about-us" className="text-white/70 text-sm hover:text-white hover:underline transition-colors">
-            Read more
+        <div className="animate-item mt-8">
+          <Link to="/about-us" className="btn-gold-grad">
+            Read More
           </Link>
         </div>
       </div>

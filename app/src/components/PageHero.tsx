@@ -5,16 +5,23 @@ interface PageHeroProps {
 
 export default function PageHero({ title, image = '/assets/asset_7.jpg' }: PageHeroProps) {
   return (
-    <section className="relative w-full h-[40vh] min-h-[260px] lg:h-[46vh] overflow-hidden flex items-center justify-center">
+    <section className="relative w-full h-[42vh] min-h-[280px] lg:h-[48vh] overflow-hidden flex items-center justify-center">
       <img
         src={image}
         alt={title}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover scale-105"
       />
-      <div className="absolute inset-0 bg-black/55" />
-      <h1 className="relative z-10 font-display text-[clamp(36px,5vw,60px)] text-white font-semibold text-center px-6 drop-shadow-lg">
-        {title}
-      </h1>
+      {/* Layered overlay: dark for legibility + brand-red tint at the base */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/45 to-black/65" />
+      <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-nm-red/40 to-transparent" />
+
+      <div className="relative z-10 text-center px-6">
+        <span className="kicker text-nm-gold-light mb-4">Namaste Mandarin</span>
+        <h1 className="font-display text-[clamp(38px,5vw,62px)] text-white font-semibold drop-shadow-lg">
+          {title}
+        </h1>
+        <div className="gold-rule mx-auto mt-5" />
+      </div>
     </section>
   );
 }

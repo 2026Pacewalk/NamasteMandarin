@@ -15,7 +15,7 @@ export default function HomePage() {
       <WhoShouldLearn />
       <CoursesSection />
       <MethodologySection />
-      <TestimonialsSection />
+      <TestimonialsSection limit={3} />
       <NewsSection limit={3} />
       <ContactSection />
     </>

@@ -2,6 +2,7 @@ import { useRef, useLayoutEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Send, MessageCircle } from 'lucide-react';
+import SectionHeading from '../components/SectionHeading';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,13 +42,13 @@ export default function ContactSection() {
   };
 
   return (
-    <section ref={sectionRef} id="contact" className="section-flowing bg-nm-red star-bg py-16 lg:py-24">
+    <section ref={sectionRef} id="contact" className="section-flowing bg-red-rich star-bg py-20 lg:py-28">
       <div className="max-w-4xl mx-auto px-6" ref={formRef}>
-        <h2 className="text-center font-display text-[clamp(32px,3.5vw,52px)] text-white font-semibold mb-10">
-          Contact Us
-        </h2>
+        <div className="mb-12">
+          <SectionHeading kicker="Get In Touch" title="Contact Us" tone="dark" />
+        </div>
 
-        <div className="bg-white rounded-2xl p-6 lg:p-10">
+        <div className="bg-white rounded-3xl p-6 lg:p-10 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.5)]">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>

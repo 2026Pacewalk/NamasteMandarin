@@ -42,7 +42,9 @@ module.exports = {
           red: '#C8181F',
           'red-dark': '#A8141A',
           gold: '#D8A22A',
+          'gold-light': '#E7C063',
           black: '#0B0B0B',
+          ivory: '#FBF7F1',
         }
       },
       fontFamily: {

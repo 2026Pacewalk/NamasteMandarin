@@ -4,6 +4,7 @@ export default function WorkingProfessionalsPage() {
   return (
     <ContentPage
       title="Working Professionals"
+      kicker="For Professionals"
       heading="Programs designed for Working Professionals"
       image="/assets/Blog.jpg"
       paragraphs={[

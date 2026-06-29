@@ -24,7 +24,7 @@ const courses = [
     img: '/assets/On-Line-Skype-Courses.png',
   },
   {
-    to: 'http://courses.namastemandarin.com/',
+    to: 'https://namastemandarin.ongraphy.com/',
     title: 'Online Courses',
     img: '/assets/online-courses-2.jpg',
   },

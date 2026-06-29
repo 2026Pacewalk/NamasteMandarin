@@ -1,6 +1,9 @@
 import { useRef, useLayoutEffect } from 'react';
+import { Link } from 'react-router';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ArrowRight } from 'lucide-react';
+import SectionHeading from '../components/SectionHeading';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -74,7 +77,7 @@ export default function NewsSection({ limit }: { limit?: number }) {
   }, []);
 
   return (
-    <section ref={sectionRef} id="news" className="section-flowing bg-gray-50 py-16 lg:py-24">
+    <section ref={sectionRef} id="news" className="section-flowing bg-ivory py-20 lg:py-28">
       {/* Chinese watermark background */}
       <div 
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -86,41 +89,50 @@ export default function NewsSection({ limit }: { limit?: number }) {
 
       <div className="max-w-6xl mx-auto px-6 lg:px-12 relative">
         {/* Title */}
-        <h2
-          ref={titleRef}
-          className="text-left font-display text-[clamp(28px,3.2vw,48px)] text-nm-black font-semibold mb-10 lg:mb-14"
-        >
-          News and Articles
-        </h2>
+        <div ref={titleRef} className="mb-12 lg:mb-16">
+          <SectionHeading kicker="In The Press" title="News and Articles" align="left" />
+        </div>
 
         {/* Article Cards - 3 columns */}
         <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {visibleArticles.map((article, i) => (
-            <div key={i} className="news-card group">
-              <div className="rounded-xl overflow-hidden mb-4 h-48">
+            <div key={i} className="news-card card-premium group flex flex-col overflow-hidden">
+              <div className="overflow-hidden h-48">
                 <img
                   src={article.image}
                   alt={article.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
-              <h3 className="font-body text-nm-red font-semibold text-base mb-3 leading-snug">
-                {article.title}
-              </h3>
-              <p className="text-nm-black/65 text-sm leading-relaxed mb-4 line-clamp-3">
-                {article.excerpt}
-              </p>
-              <a
-                href={article.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-nm-red text-white text-sm font-medium px-5 py-2 rounded hover:bg-nm-red-dark transition-colors"
-              >
-                Read More
-              </a>
+              <div className="flex flex-col flex-1 p-6">
+                <h3 className="font-body text-nm-red font-semibold text-base mb-3 leading-snug group-hover:text-nm-red-dark transition-colors">
+                  {article.title}
+                </h3>
+                <p className="text-nm-black/65 text-sm leading-relaxed mb-5 line-clamp-3 flex-1">
+                  {article.excerpt}
+                </p>
+                <a
+                  href={article.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-nm-red text-sm font-semibold hover:gap-2.5 transition-all w-fit"
+                >
+                  Read More <ArrowRight size={14} />
+                </a>
+              </div>
             </div>
           ))}
         </div>
+
+        {/* View more — only on the home (limited) view */}
+        {limit && (
+          <div className="text-center mt-12">
+            <Link to="/news-and-articles" className="btn-red">
+              View More News &amp; Articles
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

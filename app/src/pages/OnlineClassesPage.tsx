@@ -1,9 +1,13 @@
+import { ArrowUpRight } from 'lucide-react';
 import ContentPage from '../components/ContentPage';
+
+const ONLINE_PLATFORM = 'https://namastemandarin.ongraphy.com/';
 
 export default function OnlineClassesPage() {
   return (
     <ContentPage
       title="Online Classes"
+      kicker="Learn Anywhere"
       heading="Online Classes"
       image="/assets/On-Line-Skype-Courses.png"
       paragraphs={[
@@ -11,6 +15,25 @@ export default function OnlineClassesPage() {
         'Our online classes are one-on-one sessions & group sessions conducted through Skype/Google Hangouts (not pre-recorded videos). All study materials are shared online which can be accessed anytime at your convenient time.',
         'One-on-one sessions also provide you with the flexibility of self-paced learning.',
       ]}
-    />
+    >
+      {/* Enrol CTA → online learning platform */}
+      <div className="mt-12 rounded-3xl bg-red-rich star-bg p-8 lg:p-10 text-center">
+        <h3 className="font-display text-2xl lg:text-3xl text-white font-semibold">
+          Ready to start learning online?
+        </h3>
+        <p className="text-white/75 text-sm lg:text-base mt-2 max-w-xl mx-auto">
+          Access courses, live sessions &amp; study material on our online learning platform.
+        </p>
+        <a
+          href={ONLINE_PLATFORM}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-gold-grad mt-6"
+        >
+          Join Online Classes
+          <ArrowUpRight size={16} />
+        </a>
+      </div>
+    </ContentPage>
   );
 }
