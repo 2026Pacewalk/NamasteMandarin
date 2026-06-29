@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.625rem;
+
+    --nm-red: #C8181F;
+    --nm-gold: #D8A22A;
+    --nm-black: #0B0B0B;
+    --nm-red-dark: #A8141A;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--nm-red);
+    color: #FFFFFF;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    line-height: 0.98;
+  }
+}
+
+@layer components {
+  .section-pinned {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .section-flowing {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nm-card {
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 28px 70px rgba(0,0,0,0.28);
+    position: relative;
+  }
+
+  .nm-card-sm {
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 18px 45px rgba(0,0,0,0.22);
+    position: relative;
+  }
+
+  .btn-gold {
+    background-color: var(--nm-gold);
+    color: #0B0B0B;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(216, 162, 42, 0.35);
+  }
+
+  .btn-ghost {
+    background-color: transparent;
+    color: #FFFFFF;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 14px;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-ghost:hover {
+    background-color: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.6);
+  }
+
+  .btn-red {
+    background-color: var(--nm-red);
+    color: #FFFFFF;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-red:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(200, 24, 31, 0.35);
+  }
+
+  .text-micro {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  .star-bg {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 4L34.5 22.5L53 22.5L38 34L43 52.5L30 42L17 52.5L22 34L7 22.5L25.5 22.5Z' fill='%23D8A22A' fill-opacity='0.06'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+  .font-body {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
