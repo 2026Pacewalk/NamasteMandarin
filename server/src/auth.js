@@ -1,8 +1,9 @@
 import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'dev-insecure-secret-change-me';
-const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
+// Defaults are used only when the matching env var in server/.env is not set.
+const JWT_SECRET = process.env.JWT_SECRET || 'nm-default-4f7a9c2e8b1d6035-change-me';
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'namastemandarin@gmail.com';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'Namaste@Mandarin2026';
 
 export function login(username, password) {
   if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
