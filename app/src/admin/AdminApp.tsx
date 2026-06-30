@@ -4,6 +4,7 @@ import {
   Newspaper,
   Images,
   Settings as SettingsIcon,
+  Inbox,
   LogOut,
   ExternalLink,
   Loader2,
@@ -13,10 +14,12 @@ import AdminLogin from './AdminLogin';
 import CrudSection from './CrudSection';
 import GalleryAdmin from './GalleryAdmin';
 import SettingsAdmin from './SettingsAdmin';
+import LeadsAdmin from './LeadsAdmin';
 
-type SectionKey = 'testimonials' | 'news' | 'gallery' | 'settings';
+type SectionKey = 'leads' | 'testimonials' | 'news' | 'gallery' | 'settings';
 
 const NAV: { key: SectionKey; label: string; icon: typeof Images }[] = [
+  { key: 'leads', label: 'Leads', icon: Inbox },
   { key: 'testimonials', label: 'Testimonials', icon: MessageSquareQuote },
   { key: 'news', label: 'News & Articles', icon: Newspaper },
   { key: 'gallery', label: 'Gallery', icon: Images },
@@ -25,7 +28,7 @@ const NAV: { key: SectionKey; label: string; icon: typeof Images }[] = [
 
 export default function AdminApp() {
   const [authed, setAuthed] = useState<boolean | null>(null);
-  const [section, setSection] = useState<SectionKey>('testimonials');
+  const [section, setSection] = useState<SectionKey>('leads');
 
   useEffect(() => {
     if (!getToken()) {
@@ -99,6 +102,7 @@ export default function AdminApp() {
       {/* Content */}
       <main className="flex-1 ml-60 p-6 lg:p-10">
         <div className="max-w-4xl">
+          {section === 'leads' && <LeadsAdmin />}
           {section === 'testimonials' && (
             <CrudSection
               collection="testimonials"

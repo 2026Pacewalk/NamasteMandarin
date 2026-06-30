@@ -41,4 +41,4 @@ fi
 echo "==> Reloading Nginx"
 nginx -t && systemctl reload nginx
 
-echo "==> Done. Site: https://namastemandarin.com  ·  Admin: https://namastemandarin.com/admin"
+echo "==> Done. Site: https://namastemandarin.com  ·  Admin: https://namastemandarin.com/nm-admin-9z3kq"

@@ -38,6 +38,17 @@ db.exec(`
     key TEXT PRIMARY KEY,
     value TEXT NOT NULL
   );
+  CREATE TABLE IF NOT EXISTS leads (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT,
+    phone TEXT,
+    goal TEXT,
+    message TEXT,
+    status TEXT DEFAULT 'new',
+    notes TEXT,
+    created_at TEXT DEFAULT (datetime('now'))
+  );
 `);
 
 export function getSetting(key, fallback = null) {

@@ -65,6 +65,34 @@ app.put('/api/settings/:key', requireAuth, (req, res) => {
   res.json(getSetting(req.params.key));
 });
 
+/* ---------- leads (public submit, admin manage) ---------- */
+app.post('/api/leads', (req, res) => {
+  const { name, email, phone, goal, message } = req.body || {};
+  if (!name || !(email || phone)) {
+    return res.status(400).json({ error: 'Please provide your name and an email or phone.' });
+  }
+  const info = db
+    .prepare('INSERT INTO leads (name, email, phone, goal, message) VALUES (?, ?, ?, ?, ?)')
+    .run(name, email || '', phone || '', goal || '', message || '');
+  res.json({ ok: true, id: info.lastInsertRowid });
+});
+app.get('/api/leads', requireAuth, (_req, res) =>
+  res.json(db.prepare('SELECT * FROM leads ORDER BY created_at DESC, id DESC').all())
+);
+app.put('/api/leads/:id', requireAuth, (req, res) => {
+  const { status, notes } = req.body || {};
+  db.prepare('UPDATE leads SET status = COALESCE(?, status), notes = COALESCE(?, notes) WHERE id = ?').run(
+    status ?? null,
+    notes ?? null,
+    req.params.id
+  );
+  res.json(db.prepare('SELECT * FROM leads WHERE id = ?').get(req.params.id));
+});
+app.delete('/api/leads/:id', requireAuth, (req, res) => {
+  db.prepare('DELETE FROM leads WHERE id = ?').run(req.params.id);
+  res.json({ ok: true });
+});
+
 /* ---------- aggregate (one call for the public site) ---------- */
 app.get('/api/content', (_req, res) => {
   res.json({

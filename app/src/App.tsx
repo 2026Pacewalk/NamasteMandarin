@@ -24,8 +24,8 @@ import AdminApp from './admin/AdminApp';
 function App() {
   return (
     <Routes>
-      {/* Admin panel — outside the public layout */}
-      <Route path="/admin/*" element={<AdminApp />} />
+      {/* Admin panel — secret, non-default path, not linked anywhere public */}
+      <Route path="/nm-admin-9z3kq/*" element={<AdminApp />} />
 
       <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />

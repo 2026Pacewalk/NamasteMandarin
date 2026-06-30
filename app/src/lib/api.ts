@@ -34,6 +34,17 @@ export interface NewsItem { id: number; title: string; excerpt: string; image: s
 export interface GalleryItem { id: number; src: string; alt: string; sort: number; }
 export interface ContactInfo { phone: string; email: string; whatsapp: string; facebook: string; instagram: string; youtube: string; }
 export interface AboutInfo { intro: string; mission: string; vision: string; }
+export interface Lead {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  goal: string;
+  message: string;
+  status: string;
+  notes: string;
+  created_at: string;
+}
 export interface SiteContent {
   testimonials: Testimonial[];
   news: NewsItem[];
@@ -50,6 +61,12 @@ export const api = {
   create: <T>(col: string, data: unknown) => request<T>('/' + col, { method: 'POST', auth: true, json: data }),
   update: <T>(col: string, id: number, data: unknown) => request<T>(`/${col}/${id}`, { method: 'PUT', auth: true, json: data }),
   remove: (col: string, id: number) => request(`/${col}/${id}`, { method: 'DELETE', auth: true }),
+  leads: {
+    submit: (data: Partial<Lead>) => request<{ ok: boolean }>('/leads', { method: 'POST', json: data }),
+    list: () => request<Lead[]>('/leads', { auth: true }),
+    update: (id: number, data: Partial<Lead>) => request<Lead>(`/leads/${id}`, { method: 'PUT', auth: true, json: data }),
+    remove: (id: number) => request(`/leads/${id}`, { method: 'DELETE', auth: true }),
+  },
   getSetting: <T>(key: string) => request<T>('/settings/' + key),
   setSetting: <T>(key: string, value: unknown) => request<T>('/settings/' + key, { method: 'PUT', auth: true, json: value }),
   upload: async (file: File): Promise<{ url: string }> => {

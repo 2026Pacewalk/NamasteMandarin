@@ -101,7 +101,7 @@ ufw allow OpenSSH
 ## 7. Dynamic CMS backend (first-time setup)
 
 The site is backed by a small Node + SQLite API so a single admin can edit
-content at **https://namastemandarin.com/admin**. The Nginx config above already
+content at **https://namastemandarin.com/nm-admin-9z3kq**. The Nginx config above already
 proxies `/api` and `/uploads` to it.
 
 ```bash

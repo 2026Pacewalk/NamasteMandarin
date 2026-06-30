@@ -1,10 +1,13 @@
 import { useRef, useLayoutEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Send, MessageCircle } from 'lucide-react';
+import { Send, MessageCircle, CheckCircle2, Loader2 } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
+import { api } from '../lib/api';
 
 gsap.registerPlugin(ScrollTrigger);
+
+type SubmitState = 'idle' | 'sending' | 'sent' | 'error';
 
 export default function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -17,6 +20,8 @@ export default function ContactSection() {
     goal: '',
     message: '',
   });
+  const [status, setStatus] = useState<SubmitState>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
@@ -35,10 +40,18 @@ export default function ContactSection() {
     return () => ctx.revert();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Thank you for your message! We will get back to you within 24 hours.');
-    setFormData({ name: '', email: '', phone: '', goal: '', message: '' });
+    setStatus('sending');
+    setErrorMsg('');
+    try {
+      await api.leads.submit(formData);
+      setStatus('sent');
+      setFormData({ name: '', email: '', phone: '', goal: '', message: '' });
+    } catch (err) {
+      setStatus('error');
+      setErrorMsg(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    }
   };
 
   return (
@@ -49,6 +62,23 @@ export default function ContactSection() {
         </div>
 
         <div className="bg-white rounded-3xl p-6 lg:p-10 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.5)]">
+          {status === 'sent' ? (
+            <div className="text-center py-10">
+              <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-5">
+                <CheckCircle2 className="text-green-600" size={32} />
+              </div>
+              <h3 className="font-display text-2xl text-nm-black font-semibold mb-2">Thank you!</h3>
+              <p className="text-nm-black/70 text-sm max-w-md mx-auto">
+                Your enquiry has been received. Our team will get back to you within 24 hours.
+              </p>
+              <button
+                onClick={() => setStatus('idle')}
+                className="mt-6 text-nm-red text-sm font-medium hover:underline"
+              >
+                Send another message
+              </button>
+            </div>
+          ) : (
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
@@ -115,10 +145,18 @@ export default function ContactSection() {
               />
             </div>
 
+            {status === 'error' && (
+              <p className="text-red-600 text-sm">{errorMsg}</p>
+            )}
+
             <div className="flex flex-col sm:flex-row gap-4">
-              <button type="submit" className="btn-red flex-1 justify-center">
-                <Send size={16} />
-                Send Message
+              <button
+                type="submit"
+                disabled={status === 'sending'}
+                className="btn-red flex-1 justify-center disabled:opacity-60"
+              >
+                {status === 'sending' ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
+                {status === 'sending' ? 'Sending…' : 'Send Message'}
               </button>
               <a
                 href="https://wa.me/+919880687766"
@@ -131,6 +169,7 @@ export default function ContactSection() {
               </a>
             </div>
           </form>
+          )}
         </div>
       </div>
     </section>
