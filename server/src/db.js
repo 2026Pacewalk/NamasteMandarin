@@ -34,6 +34,12 @@ db.exec(`
     alt TEXT,
     sort INTEGER DEFAULT 0
   );
+  CREATE TABLE IF NOT EXISTS certificates (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    src TEXT NOT NULL,
+    title TEXT,
+    sort INTEGER DEFAULT 0
+  );
   CREATE TABLE IF NOT EXISTS settings (
     key TEXT PRIMARY KEY,
     value TEXT NOT NULL
@@ -82,6 +88,11 @@ export function seedIfEmpty() {
   if (count('gallery') === 0) {
     const insert = db.prepare('INSERT INTO gallery (src, alt, sort) VALUES (?, ?, ?)');
     seedGallery.forEach((src, i) => insert.run(src, `Namaste Mandarin gallery ${i + 1}`, i));
+  }
+
+  if (count('certificates') === 0) {
+    const insert = db.prepare('INSERT INTO certificates (src, title, sort) VALUES (?, ?, ?)');
+    seedCertificates.forEach((src, i) => insert.run(src, `Certificate ${i + 1}`, i));
   }
 
   if (getSetting('contact') === null) {
@@ -137,3 +148,10 @@ const seedGallery = [
   'g33-big.jpg', 'g34-big.jpg', 'g35-big.jpg', 'g36-big.jpg', 'g37-big.jpg',
   'g38-big.jpg', 'g39-big.jpg', 'g40-big.jpg', 'g42-big.jpg',
 ].map((f) => `/assets/gallery/${f}`);
+
+const seedCertificates = [
+  '/assets/certificates.jpg',
+  '/assets/certificates1.jpg',
+  '/assets/certificates2.jpg',
+  '/assets/certificates3.jpg',
+];

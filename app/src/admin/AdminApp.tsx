@@ -3,6 +3,7 @@ import {
   MessageSquareQuote,
   Newspaper,
   Images,
+  Award,
   Settings as SettingsIcon,
   Inbox,
   LogOut,
@@ -12,17 +13,18 @@ import {
 import { api, getToken, clearToken } from '../lib/api';
 import AdminLogin from './AdminLogin';
 import CrudSection from './CrudSection';
-import GalleryAdmin from './GalleryAdmin';
+import ImageCollectionAdmin from './ImageCollectionAdmin';
 import SettingsAdmin from './SettingsAdmin';
 import LeadsAdmin from './LeadsAdmin';
 
-type SectionKey = 'leads' | 'testimonials' | 'news' | 'gallery' | 'settings';
+type SectionKey = 'leads' | 'testimonials' | 'news' | 'gallery' | 'certificates' | 'settings';
 
 const NAV: { key: SectionKey; label: string; icon: typeof Images }[] = [
   { key: 'leads', label: 'Leads', icon: Inbox },
   { key: 'testimonials', label: 'Testimonials', icon: MessageSquareQuote },
   { key: 'news', label: 'News & Articles', icon: Newspaper },
   { key: 'gallery', label: 'Gallery', icon: Images },
+  { key: 'certificates', label: 'Certificates', icon: Award },
   { key: 'settings', label: 'Settings', icon: SettingsIcon },
 ];
 
@@ -130,7 +132,23 @@ export default function AdminApp() {
               summary={(r) => ({ title: String(r.title), subtitle: String(r.link || ''), image: String(r.image || '') })}
             />
           )}
-          {section === 'gallery' && <GalleryAdmin />}
+          {section === 'gallery' && (
+            <ImageCollectionAdmin
+              collection="gallery"
+              heading="Gallery"
+              captionField="alt"
+              helpText="Photos shown on the Gallery page."
+            />
+          )}
+          {section === 'certificates' && (
+            <ImageCollectionAdmin
+              collection="certificates"
+              heading="Certificates"
+              captionField="title"
+              tall
+              helpText="Certificates shown on the Certificates page. Upload the new ones, then delete the old."
+            />
+          )}
           {section === 'settings' && <SettingsAdmin />}
         </div>
       </main>

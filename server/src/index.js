@@ -57,6 +57,7 @@ app.get('/api/auth/me', requireAuth, (req, res) => res.json({ user: { username: 
 app.use('/api/testimonials', crud('testimonials', ['name', 'role', 'quote', 'img', 'rating', 'sort']));
 app.use('/api/news', crud('news', ['title', 'excerpt', 'image', 'link', 'sort']));
 app.use('/api/gallery', crud('gallery', ['src', 'alt', 'sort']));
+app.use('/api/certificates', crud('certificates', ['src', 'title', 'sort']));
 
 /* ---------- settings (key/value JSON) ---------- */
 app.get('/api/settings/:key', (req, res) => res.json(getSetting(req.params.key, null)));
@@ -99,6 +100,7 @@ app.get('/api/content', (_req, res) => {
     testimonials: listOrdered('testimonials'),
     news: listOrdered('news'),
     gallery: listOrdered('gallery'),
+    certificates: listOrdered('certificates'),
     settings: {
       contact: getSetting('contact'),
       hero_banners: getSetting('hero_banners'),

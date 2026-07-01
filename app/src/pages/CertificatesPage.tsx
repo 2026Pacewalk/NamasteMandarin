@@ -2,8 +2,9 @@ import { useState, useEffect, useCallback } from 'react';
 import { Award, BadgeCheck, GraduationCap, X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
+import { useContent } from '../lib/content';
 
-const certImages = [
+const DEFAULT_CERTS = [
   '/assets/certificates.jpg',
   '/assets/certificates1.jpg',
   '/assets/certificates2.jpg',
@@ -29,13 +30,17 @@ const features = [
 ];
 
 export default function CertificatesPage() {
+  const content = useContent();
+  const certImages = content?.certificates?.length
+    ? content.certificates.map((c) => c.src)
+    : DEFAULT_CERTS;
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   const close = useCallback(() => setLightbox(null), []);
   const show = useCallback(
     (dir: number) =>
       setLightbox((i) => (i === null ? i : (i + dir + certImages.length) % certImages.length)),
-    []
+    [certImages.length]
   );
 
   useEffect(() => {

@@ -32,6 +32,7 @@ async function request<T = unknown>(path: string, opts: ReqOpts = {}): Promise<T
 export interface Testimonial { id: number; name: string; role: string; quote: string; img: string; rating: number; sort: number; }
 export interface NewsItem { id: number; title: string; excerpt: string; image: string; link: string; sort: number; }
 export interface GalleryItem { id: number; src: string; alt: string; sort: number; }
+export interface CertificateItem { id: number; src: string; title: string; sort: number; }
 export interface ContactInfo { phone: string; email: string; whatsapp: string; facebook: string; instagram: string; youtube: string; }
 export interface AboutInfo { intro: string; mission: string; vision: string; }
 export interface Lead {
@@ -49,6 +50,7 @@ export interface SiteContent {
   testimonials: Testimonial[];
   news: NewsItem[];
   gallery: GalleryItem[];
+  certificates: CertificateItem[];
   settings: { contact: ContactInfo; hero_banners: string[]; about: AboutInfo };
 }
 
