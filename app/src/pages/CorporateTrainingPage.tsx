@@ -4,7 +4,6 @@ export default function CorporateTrainingPage() {
   return (
     <ContentPage
       title="Corporate Training"
-      kicker="For Teams"
       heading="Courses designed for Corporate Training"
       image="/assets/g32-big.jpg"
       paragraphs={[

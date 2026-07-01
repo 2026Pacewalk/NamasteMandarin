@@ -1,9 +1,10 @@
 interface PageHeroProps {
   title: string;
   image?: string;
+  hideEyebrow?: boolean;
 }
 
-export default function PageHero({ title, image = '/assets/asset_7.jpg' }: PageHeroProps) {
+export default function PageHero({ title, image = '/assets/asset_7.jpg', hideEyebrow = false }: PageHeroProps) {
   return (
     <section className="relative w-full h-[42vh] min-h-[280px] lg:h-[48vh] overflow-hidden flex items-center justify-center">
       <img
@@ -16,7 +17,7 @@ export default function PageHero({ title, image = '/assets/asset_7.jpg' }: PageH
       <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-nm-red/40 to-transparent" />
 
       <div className="relative z-10 text-center px-6">
-        <span className="kicker text-nm-gold-light mb-4">Namaste Mandarin</span>
+        {!hideEyebrow && <span className="kicker text-nm-gold-light mb-4">Namaste Mandarin</span>}
         <h1 className="font-display text-[clamp(38px,5vw,62px)] text-white font-semibold drop-shadow-lg">
           {title}
         </h1>

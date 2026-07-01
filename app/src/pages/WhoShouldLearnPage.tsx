@@ -5,12 +5,12 @@ const groups = [
   {
     icon: '/assets/sartaj.png',
     title: 'Children / Students',
-    body: 'Chinese is the fastest growing foreign language being taught at schools in the west, US in particular. Knowing Mandarin would be a global skill set which expands academic opportunities — including scholarships under the Youth Chinese Test — & future job prospects for students stepping into a globalised world. Research shows learning a new language is easier during childhood; a school-going student finds it far easier to pick up a foreign language & can gain proficiency faster.',
+    body: 'Chinese is the fastest growing foreign language being taught at schools in the west, US in particular. Knowing Mandarin would be a global skill set which expands academic opportunities — including scholarships & future job prospects for students stepping into a globalised world. Research shows learning a new language is easier during childhood; a school-going student finds it far easier to pick up a foreign language & can gain proficiency faster.',
   },
   {
     icon: '/assets/Working-professionals-1.png',
     title: 'Working Professionals',
-    body: 'With increasing business ties, economic investment between India-China & growing job prospects (in China & with Chinese based companies), Mandarin is becoming an important foreign language. Knowing Mandarin is a differentiating key factor which would enhance one’s effectiveness in dealing & collaborating with Chinese counterparts at work.',
+    body: 'With increasing business ties, economic investment between World-China & growing job prospects (in China & with Chinese based companies), Mandarin is becoming an important foreign language. Knowing Mandarin is a differentiating key factor which would enhance one’s effectiveness in dealing & collaborating with Chinese counterparts at work.',
   },
   {
     icon: '/assets/Business-Persons-1.png',
@@ -48,19 +48,14 @@ export default function WhoShouldLearnPage() {
           </div>
 
           <div className="space-y-6">
-            {groups.map((g, i) => (
+            {groups.map((g) => (
               <div
                 key={g.title}
                 className="card-premium p-7 lg:p-9 flex flex-col sm:flex-row gap-6 sm:gap-8 items-start"
               >
-                {/* Icon + number */}
-                <div className="relative flex-shrink-0">
-                  <div className="w-24 h-24 rounded-2xl bg-nm-red/5 ring-1 ring-nm-red/10 flex items-center justify-center">
-                    <img src={g.icon} alt={g.title} className="w-16 h-16 object-contain" />
-                  </div>
-                  <span className="absolute -top-3 -left-3 w-9 h-9 rounded-full bg-gradient-to-br from-nm-gold-light to-nm-gold text-nm-black font-display font-bold text-sm flex items-center justify-center shadow-md">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
+                {/* Icon */}
+                <div className="w-28 h-28 rounded-2xl bg-nm-red/5 ring-1 ring-nm-red/10 flex items-center justify-center flex-shrink-0">
+                  <img src={g.icon} alt={g.title} className="w-20 h-20 object-contain" />
                 </div>
                 {/* Content */}
                 <div className="flex-1">

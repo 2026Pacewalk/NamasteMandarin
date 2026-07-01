@@ -9,6 +9,7 @@ interface ContentPageProps {
   kicker?: string;
   image?: string;
   banner?: string;
+  hideEyebrow?: boolean;
   /** Body paragraphs. Each string becomes a <p>; the first renders as a lead. */
   paragraphs?: string[];
   /** Optional bullet list rendered after the paragraphs. */
@@ -22,13 +23,14 @@ export default function ContentPage({
   kicker,
   image,
   banner = '/assets/why-learn-chinese-stimulates-brain-function.png',
+  hideEyebrow = false,
   paragraphs = [],
   bullets,
   children,
 }: ContentPageProps) {
   return (
     <>
-      <PageHero title={title} image={banner} />
+      <PageHero title={title} image={banner} hideEyebrow={hideEyebrow} />
       <section className="bg-white py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6">
           {heading && (
