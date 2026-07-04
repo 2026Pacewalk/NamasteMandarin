@@ -6,6 +6,7 @@ export default function YoungLearnersPage() {
       title="Young Learners/Students"
       kicker="For Children"
       heading="Young Learners/Students"
+      heroBanner="/assets/banner-young-learners.jpg"
       image="/assets/g33-big.jpg"
       paragraphs={[
         'Learning a foreign language as an adult is much more challenging and hard than to learn it as a child. Children’s brains are like sponges when it comes to foreign language acquisition. They are developmentally “superior to adults” in that they can soak up a language and become fluent quickly, easily, and without accent.',
