@@ -6,6 +6,7 @@ export default function WorkingProfessionalsPage() {
       title="Working Professionals"
       kicker="For Professionals"
       heading="Programs designed for Working Professionals"
+      heroBanner="/assets/banner-working-professionals.jpg"
       image="/assets/Blog.jpg"
       paragraphs={[
         'China’s economy currently stands as the second largest in the world and continues to grow at an amazing pace. Learning to speak Mandarin Chinese is a great way to take advantage of this huge economic shift and opportunities, and to give oneself an advantage in the increasingly competitive business world.',
