@@ -4,7 +4,7 @@ import TestimonialsSection from '../sections/TestimonialsSection';
 export default function TestimonialsPage() {
   return (
     <>
-      <PageHero title="Testimonials" image="/assets/why-learn-chinese-stimulates-brain-function.png" />
+      <PageHero title="Testimonials" banner="/assets/banner-testimonials.jpg" />
       <TestimonialsSection />
     </>
   );

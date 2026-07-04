@@ -3,7 +3,7 @@ import PageHero from '../components/PageHero';
 export default function OurTeamPage() {
   return (
     <>
-      <PageHero title="Our Team" image="/assets/why-learn-chinese-stimulates-brain-function.png" />
+      <PageHero title="Our Team" banner="/assets/banner-our-team.jpg" />
 
       <section className="bg-white py-16 lg:py-24">
         <div className="max-w-5xl mx-auto px-6 lg:px-12">

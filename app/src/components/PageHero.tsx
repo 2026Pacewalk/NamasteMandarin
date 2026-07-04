@@ -2,9 +2,19 @@ interface PageHeroProps {
   title: string;
   image?: string;
   hideEyebrow?: boolean;
+  /** When set, renders this image as a full, uncropped banner (no overlay or overlaid title —
+   *  use for designed banners that already contain their own title and artwork). */
+  banner?: string;
 }
 
-export default function PageHero({ title, image = '/assets/asset_7.jpg', hideEyebrow = false }: PageHeroProps) {
+export default function PageHero({ title, image = '/assets/asset_7.jpg', hideEyebrow = false, banner }: PageHeroProps) {
+  if (banner) {
+    return (
+      <section className="w-full">
+        <img src={banner} alt={title} className="block w-full h-auto" />
+      </section>
+    );
+  }
   return (
     <section className="relative w-full h-[42vh] min-h-[280px] lg:h-[48vh] overflow-hidden flex items-center justify-center">
       <img

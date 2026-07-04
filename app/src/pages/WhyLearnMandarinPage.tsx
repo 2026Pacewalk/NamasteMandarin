@@ -37,7 +37,7 @@ export default function WhyLearnMandarinPage() {
     <>
       <PageHero
         title="Why You Should Learn Mandarin?"
-        image="/assets/chinese-language-is-chinese-a-language-1024x683-1.jpg"
+        banner="/assets/banner-why-learn-mandarin.jpg"
       />
 
       <section className="bg-white py-16 lg:py-24">

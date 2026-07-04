@@ -60,7 +60,7 @@ export default function CertificatesPage() {
 
   return (
     <>
-      <PageHero title="Certificates" image="/assets/why-learn-chinese-stimulates-brain-function.png" />
+      <PageHero title="Certificates" banner="/assets/banner-certificates.jpg" />
 
       {/* Intro */}
       <section className="bg-white py-16 lg:py-24">
