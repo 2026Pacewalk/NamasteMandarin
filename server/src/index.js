@@ -3,7 +3,7 @@ import cors from 'cors';
 import multer from 'multer';
 import { fileURLToPath } from 'url';
 import { dirname, join, extname } from 'path';
-import { db, getSetting, setSetting, seedIfEmpty } from './db.js';
+import { db, getSetting, setSetting, seedIfEmpty, migrate } from './db.js';
 import { login, requireAuth } from './auth.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -11,6 +11,7 @@ const UPLOAD_DIR = join(__dirname, '..', 'uploads');
 const PORT = process.env.PORT || 4000;
 
 seedIfEmpty();
+migrate();
 
 const app = express();
 app.use(cors());

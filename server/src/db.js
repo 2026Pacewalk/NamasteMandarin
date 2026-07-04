@@ -106,7 +106,7 @@ export function seedIfEmpty() {
     });
   }
   if (getSetting('hero_banners') === null) {
-    setSetting('hero_banners', ['/assets/banner-2.jpg', '/assets/banner2.jpg', '/assets/banner1.jpg']);
+    setSetting('hero_banners', ['/assets/banner-home.jpg']);
   }
   if (getSetting('about') === null) {
     setSetting('about', {
@@ -117,6 +117,24 @@ export function seedIfEmpty() {
       vision:
         'Our Vision is to reach majority of people who are interested in learning Chinese language through modern educational technologies.',
     });
+  }
+}
+
+/**
+ * One-time, idempotent data migrations for existing databases.
+ * Safe to run on every startup — each step only acts when the data still
+ * matches the exact previous default, so it never clobbers admin edits.
+ */
+export function migrate() {
+  // Replace the original 3-banner homepage carousel with the single designed banner.
+  const OLD_HERO = ['/assets/banner-2.jpg', '/assets/banner2.jpg', '/assets/banner1.jpg'];
+  const hero = getSetting('hero_banners');
+  if (
+    Array.isArray(hero) &&
+    hero.length === OLD_HERO.length &&
+    hero.every((v, i) => v === OLD_HERO[i])
+  ) {
+    setSetting('hero_banners', ['/assets/banner-home.jpg']);
   }
 }
 

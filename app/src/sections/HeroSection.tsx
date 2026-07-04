@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useContent } from '../lib/content';
 
-const DEFAULT_HERO = ['/assets/banner-2.jpg', '/assets/banner2.jpg', '/assets/banner1.jpg'];
+const DEFAULT_HERO = ['/assets/banner-home.jpg'];
 
 export default function HeroSection() {
   const content = useContent();
@@ -22,7 +22,7 @@ export default function HeroSection() {
   const prev = () => setCurrent((c) => (c - 1 + heroImages.length) % heroImages.length);
 
   return (
-    <section className="relative w-full aspect-[1920/724] overflow-hidden">
+    <section className="relative w-full aspect-[1600/738] overflow-hidden">
       {/* Images */}
       {heroImages.map((img, i) => (
         <div
