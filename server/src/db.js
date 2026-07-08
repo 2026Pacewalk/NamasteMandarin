@@ -110,8 +110,7 @@ export function seedIfEmpty() {
   }
   if (getSetting('about') === null) {
     setSetting('about', {
-      intro:
-        'Namaste Mandarin is a Chinese language training institute. We are committed towards promoting Mandarin among the student community & working professionals. We have strong experience in teaching children, coaching working professionals & in content development for virtual training programs.',
+      intro: ABOUT_INTRO,
       mission:
         'Our Mission is to teach Chinese language through easy and simple methods yet cover all important aspects of the language and to provide high quality Chinese language courses to non-native speakers.',
       vision:
@@ -119,6 +118,10 @@ export function seedIfEmpty() {
     });
   }
 }
+
+// The expanded "Who we are and What we do?" intro (paragraphs split on \n\n).
+const ABOUT_INTRO =
+  'Namaste Mandarin is a premier Chinese language training institute dedicated to promoting Mandarin among students, working professionals, entrepreneurs, and corporate teams. With extensive experience in teaching children, mentoring working professionals, and training business leaders, we design customized learning programs that cater to different goals—whether it\'s academic excellence, career growth, business communication, travel, or cultural understanding.\n\nBeyond language training, we also specialize in developing high-quality content for virtual learning programs, ensuring interactive and effective learning experiences. At Namaste Mandarin, we believe that language learning goes beyond textbooks, which is why we emphasize real-world communication, cultural immersion, and practical application in every course.';
 
 /**
  * One-time, idempotent data migrations for existing databases.
@@ -135,6 +138,14 @@ export function migrate() {
     hero.every((v, i) => v === OLD_HERO[i])
   ) {
     setSetting('hero_banners', ['/assets/banner-home.jpg']);
+  }
+
+  // Expand the About intro (only if it still holds the original seeded text).
+  const OLD_INTRO =
+    'Namaste Mandarin is a Chinese language training institute. We are committed towards promoting Mandarin among the student community & working professionals. We have strong experience in teaching children, coaching working professionals & in content development for virtual training programs.';
+  const about = getSetting('about');
+  if (about && about.intro === OLD_INTRO) {
+    setSetting('about', { ...about, intro: ABOUT_INTRO });
   }
 }
 

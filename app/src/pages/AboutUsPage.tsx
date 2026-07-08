@@ -3,7 +3,7 @@ import { useContent } from '../lib/content';
 
 const DEFAULT_ABOUT = {
   intro:
-    'Namaste Mandarin is a Chinese language training institute. We are committed towards promoting Mandarin among the student community & working professionals. We have strong experience in teaching children, coaching working professionals & in content development for virtual training programs.',
+    'Namaste Mandarin is a premier Chinese language training institute dedicated to promoting Mandarin among students, working professionals, entrepreneurs, and corporate teams. With extensive experience in teaching children, mentoring working professionals, and training business leaders, we design customized learning programs that cater to different goals—whether it\'s academic excellence, career growth, business communication, travel, or cultural understanding.\n\nBeyond language training, we also specialize in developing high-quality content for virtual learning programs, ensuring interactive and effective learning experiences. At Namaste Mandarin, we believe that language learning goes beyond textbooks, which is why we emphasize real-world communication, cultural immersion, and practical application in every course.',
   mission:
     'Our Mission is to teach Chinese language through easy and simple methods yet cover all important aspects of the language and to provide high quality Chinese language courses to non-native speakers.',
   vision:
@@ -25,7 +25,9 @@ export default function AboutUsPage() {
           </h2>
 
           <div className="space-y-6 text-nm-black/80 text-base lg:text-lg leading-relaxed">
-            <p>{about.intro}</p>
+            {about.intro.split('\n\n').map((para, i) => (
+              <p key={i}>{para}</p>
+            ))}
             <p>{about.mission}</p>
             <p>{about.vision}</p>
           </div>
