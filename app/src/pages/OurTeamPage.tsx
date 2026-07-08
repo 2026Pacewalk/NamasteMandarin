@@ -7,42 +7,76 @@ export default function OurTeamPage() {
 
       <section className="bg-white py-16 lg:py-24">
         <div className="max-w-5xl mx-auto px-6 lg:px-12">
-          {/* Sonia Ghosh */}
+          {/* Sonia GuptaGhosh */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
             <div className="md:col-span-1">
               <img
                 src="/assets/sonia.jpg"
-                alt="Sonia Ghosh"
+                alt="Sonia GuptaGhosh"
                 className="w-full rounded-2xl shadow-sm"
               />
-              <h2 className="font-body text-xl text-nm-black font-semibold mt-5">Sonia Ghosh</h2>
-              <p className="text-nm-red text-sm font-medium mt-1">Founding Member &amp; Instructor</p>
+              <h2 className="font-body text-xl text-nm-black font-semibold mt-5">Sonia GuptaGhosh</h2>
+              <p className="text-nm-red text-sm font-medium mt-1">Founder, Namaste Mandarin</p>
             </div>
             <div className="md:col-span-2 space-y-4 text-nm-black/75 text-base leading-relaxed">
               <blockquote className="border-l-4 border-nm-red pl-5 italic text-nm-black/80">
-                “With increasing academic interests, business ties &amp; job prospects in China &amp;
-                with Chinese based companies, Mandarin language is poised to become one of the most
-                sought-after foreign languages in the global arena. I am passionate about teaching
-                Mandarin language to students &amp; working professionals, for helping them in
-                enhancing their global skill-set” <span className="not-italic font-medium">- Sonia</span>
+                “With growing academic collaborations, expanding business ties, and increasing career
+                opportunities involving China and Chinese companies, Mandarin has become one of the
+                world’s most valuable foreign languages. My passion is to help students and
+                professionals learn Mandarin with confidence, enabling them to build global skills and
+                unlock new opportunities.”{' '}
+                <span className="not-italic font-medium">— Sonia GuptaGhosh</span>
               </blockquote>
               <p>
-                Sonia is one of the founding members of Namaste Mandarin.{' '}
-                <strong className="text-nm-black">Exposure to China:</strong> She has lived in China
-                for over three years &amp; has learned Mandarin from native Chinese teachers.
+                Sonia GuptaGhosh is the founder of{' '}
+                <strong className="text-nm-black">Namaste Mandarin</strong>, a Chinese language
+                training institute dedicated to making Mandarin learning practical, engaging, and
+                accessible.
               </p>
               <p>
-                <strong className="text-nm-black">Credentials:</strong> Chinese language
-                certification program from iMandarin (a renowned Chinese language training institute,
-                with 20 campuses across China). Advanced program of Chinese language from renowned
-                university “East China Normal University”. HSK certified (HSK is a Chinese proficiency
-                test which is conducted by Confucius Institute headquarters (Hanban) Beijing, China).
+                Having lived in <strong className="text-nm-black">China for over three years</strong>,
+                Sonia gained firsthand exposure to the country’s language, culture, and way of life
+                while learning Mandarin from native Chinese teachers. This immersive experience has
+                enabled her to teach not only textbook Mandarin but also the practical, conversational
+                language used in everyday life.
+              </p>
+
+              <h3 className="font-display text-xl text-nm-black font-semibold pt-2">
+                Qualifications &amp; Certifications
+              </h3>
+              <ul className="list-disc pl-5 space-y-2 marker:text-nm-red">
+                <li>
+                  Chinese Language Certification Program from{' '}
+                  <strong className="text-nm-black">iMandarin</strong>, a renowned Chinese language
+                  institute with multiple campuses across China.
+                </li>
+                <li>
+                  Chinese Language Program from{' '}
+                  <strong className="text-nm-black">East China Normal University</strong>, Shanghai.
+                </li>
+                <li>
+                  <strong className="text-nm-black">HSK Level 4 Certified</strong> (Chinese
+                  Proficiency Test).
+                </li>
+              </ul>
+              <p>
+                Before founding Namaste Mandarin, Sonia earned a{' '}
+                <strong className="text-nm-black">
+                  Master’s degree in Pharmaceutics from Manipal University
+                </strong>{' '}
+                and spent <strong className="text-nm-black">six years</strong> working in the{' '}
+                <strong className="text-nm-black">
+                  Pharmaceutical R&amp;D and Clinical Research industry
+                </strong>{' '}
+                with multinational organizations.
               </p>
               <p>
-                Her stay in China has given her first hand experience of Chinese culture &amp; exposed
-                her to the colloquial aspect of Mandarin language. She also holds a Masters degree in
-                Pharmaceutics from Manipal University &amp; has worked in MNC Pharmaceutical R&amp;D
-                and Clinical Research Industry for 6 years.
+                Today, she combines her international experience, structured teaching approach, and
+                passion for language education to help students, working professionals, entrepreneurs,
+                and corporate teams achieve their Mandarin learning goals. Under her leadership,
+                Namaste Mandarin has trained learners from diverse backgrounds, guided students toward
+                HSK success, facilitated interactions with native Chinese speakers, and fostered a
+                learning environment that extends well beyond traditional classroom teaching.
               </p>
             </div>
           </div>
