@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Award, BadgeCheck, GraduationCap, X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeading from '../components/SectionHeading';
 import { useContent } from '../lib/content';
@@ -9,24 +9,6 @@ const DEFAULT_CERTS = [
   '/assets/certificates1.jpg',
   '/assets/certificates2.jpg',
   '/assets/certificates3.jpg',
-];
-
-const features = [
-  {
-    icon: Award,
-    title: 'ISO 9001:2015 Certified',
-    text: 'An internationally recognised standard for quality management — your assurance of consistent, high-quality training.',
-  },
-  {
-    icon: BadgeCheck,
-    title: 'Certificate of Completion',
-    text: 'Every student receives a certificate on successfully completing each level, recognising their Mandarin proficiency.',
-  },
-  {
-    icon: GraduationCap,
-    title: 'HSK Exam Guidance',
-    text: 'Structured preparation for the HSK — the official Chinese proficiency test for non-native speakers.',
-  },
 ];
 
 export default function CertificatesPage() {
@@ -61,39 +43,6 @@ export default function CertificatesPage() {
   return (
     <>
       <PageHero title="Certificates" banner="/assets/banner-certificates.jpg" />
-
-      {/* Intro */}
-      <section className="bg-white py-16 lg:py-24">
-        <div className="max-w-5xl mx-auto px-6 lg:px-12">
-          <div className="text-center">
-            <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-nm-gold/10 ring-1 ring-nm-gold/30 mb-6">
-              <img
-                src="/assets/We-are-ISO-9001-2015-Certified.png"
-                alt="ISO 9001:2015 Certified"
-                className="h-16 w-auto"
-              />
-            </div>
-            <SectionHeading
-              kicker="Recognised Quality"
-              title="We are ISO 9001:2015 Certified"
-              subtitle="Namaste Mandarin maintains internationally certified quality standards. On completing each level, our students are awarded a Certificate of Completion recognising their Mandarin proficiency."
-            />
-          </div>
-
-          {/* Feature cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
-            {features.map((f) => (
-              <div key={f.title} className="card-premium p-7 text-center">
-                <div className="w-14 h-14 rounded-2xl bg-nm-red/8 flex items-center justify-center mx-auto mb-5">
-                  <f.icon className="text-nm-red" size={26} />
-                </div>
-                <h3 className="font-body text-lg text-nm-black font-semibold mb-2">{f.title}</h3>
-                <p className="text-nm-black/60 text-sm leading-relaxed">{f.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Certificate gallery */}
       <section className="bg-ivory py-16 lg:py-24">
