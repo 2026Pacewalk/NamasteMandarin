@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router';
 import {
   Facebook,
@@ -8,9 +7,7 @@ import {
   Mail,
   MessageCircle,
   ArrowUp,
-  Send,
   BadgeCheck,
-  Check,
 } from 'lucide-react';
 
 const footerLinks = {
@@ -64,16 +61,6 @@ function LinkColumn({ title, links }: { title: string; links: { label: string; t
 }
 
 export default function FooterSection() {
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    setSubscribed(true);
-    setEmail('');
-  };
-
   const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
@@ -84,42 +71,6 @@ export default function FooterSection() {
       <div className="absolute inset-0 star-bg opacity-60 pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Newsletter band */}
-        <div className="py-10 border-b border-white/10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-          <div>
-            <h3 className="font-display text-2xl lg:text-3xl font-semibold text-white">
-              Stay in the loop
-            </h3>
-            <p className="text-white/55 text-sm mt-1">
-              Mandarin learning tips, news &amp; course updates — straight to your inbox.
-            </p>
-          </div>
-
-          {subscribed ? (
-            <div className="flex items-center gap-2 text-nm-gold-light font-medium">
-              <span className="w-8 h-8 rounded-full bg-nm-gold/20 flex items-center justify-center">
-                <Check size={16} className="text-nm-gold-light" />
-              </span>
-              Thanks for subscribing!
-            </div>
-          ) : (
-            <form onSubmit={handleSubscribe} className="flex w-full lg:w-auto max-w-md gap-3">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                className="flex-1 lg:w-72 bg-white/5 border border-white/15 rounded-full px-5 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-nm-gold/60 focus:ring-2 focus:ring-nm-gold/15 transition-all"
-              />
-              <button type="submit" className="btn-gold-grad whitespace-nowrap">
-                <Send size={15} />
-                Subscribe
-              </button>
-            </form>
-          )}
-        </div>
-
         {/* Main grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-8 py-14">
           {/* Brand + contact + social */}
