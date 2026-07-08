@@ -5,6 +5,7 @@ export default function CorporateTrainingPage() {
     <ContentPage
       title="Corporate Training"
       heading="Courses designed for Corporate Training"
+      heroBanner="/assets/banner-corporate-training.jpg"
       image="/assets/g32-big.jpg"
       paragraphs={[
         'Specifically designed to suit your industry needs, we offer Mandarin Chinese language courses for professionals.',

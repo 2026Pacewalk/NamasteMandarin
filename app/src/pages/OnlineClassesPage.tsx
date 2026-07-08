@@ -6,6 +6,7 @@ export default function OnlineClassesPage() {
       title="Online Classes"
       kicker="Learn Anywhere"
       heading="Online Classes"
+      heroBanner="/assets/banner-online-classes.jpg"
       image="/assets/On-Line-Skype-Courses.png"
       paragraphs={[
         'Online classes provide you with the advantage of taking classes from the comfort of your home & at your convenient time, without worrying much about the travelling part.',

@@ -32,10 +32,7 @@ const groups = [
 export default function WhoShouldLearnPage() {
   return (
     <>
-      <PageHero
-        title="Who Should Learn Mandarin"
-        image="/assets/chinese-language-is-chinese-a-language-1024x683-1.jpg"
-      />
+      <PageHero title="Who Should Learn Mandarin" banner="/assets/banner-who-should-learn.jpg" />
 
       <section className="bg-ivory py-16 lg:py-24">
         <div className="max-w-5xl mx-auto px-6 lg:px-12">

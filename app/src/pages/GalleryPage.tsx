@@ -14,7 +14,7 @@ export default function GalleryPage() {
 
   return (
     <>
-      <PageHero title="Gallery" image="/assets/why-learn-chinese-stimulates-brain-function.png" />
+      <PageHero title="Gallery" banner="/assets/banner-gallery.jpg" />
 
       <section className="bg-white py-16 lg:py-24">
         <div className="max-w-6xl mx-auto px-6 lg:px-12">
