@@ -109,19 +109,19 @@ export function seedIfEmpty() {
     setSetting('hero_banners', ['/assets/banner-home.jpg']);
   }
   if (getSetting('about') === null) {
-    setSetting('about', {
-      intro: ABOUT_INTRO,
-      mission:
-        'Our Mission is to teach Chinese language through easy and simple methods yet cover all important aspects of the language and to provide high quality Chinese language courses to non-native speakers.',
-      vision:
-        'Our Vision is to reach majority of people who are interested in learning Chinese language through modern educational technologies.',
-    });
+    setSetting('about', { intro: ABOUT_INTRO, mission: ABOUT_MISSION, vision: ABOUT_VISION });
   }
 }
 
 // The expanded "Who we are and What we do?" intro (paragraphs split on \n\n).
 const ABOUT_INTRO =
   'Namaste Mandarin is a premier Chinese language training institute dedicated to promoting Mandarin among students, working professionals, entrepreneurs, and corporate teams. With extensive experience in teaching children, mentoring working professionals, and training business leaders, we design customized learning programs that cater to different goals—whether it\'s academic excellence, career growth, business communication, travel, or cultural understanding.\n\nBeyond language training, we also specialize in developing high-quality content for virtual learning programs, ensuring interactive and effective learning experiences. At Namaste Mandarin, we believe that language learning goes beyond textbooks, which is why we emphasize real-world communication, cultural immersion, and practical application in every course.';
+
+const ABOUT_MISSION =
+  'At Namaste Mandarin, our mission is to make Chinese language learning simple, engaging, and accessible through practical and effective teaching methods. We strive to provide high-quality Mandarin courses for non-native speakers, ensuring learners develop strong communication skills while gaining a deeper understanding of Chinese culture and real-world language use.';
+
+const ABOUT_VISION =
+  'Our vision is to become a trusted and leading platform for Mandarin education, reaching learners across the globe through innovative teaching methodologies and modern educational technologies. We aspire to empower students, professionals, entrepreneurs, and organizations with the language skills and cultural confidence needed to thrive in an increasingly connected world.';
 
 /**
  * One-time, idempotent data migrations for existing databases.
@@ -140,12 +140,20 @@ export function migrate() {
     setSetting('hero_banners', ['/assets/banner-home.jpg']);
   }
 
-  // Expand the About intro (only if it still holds the original seeded text).
+  // Refresh the About copy — each field only if it still holds its original seeded text.
   const OLD_INTRO =
     'Namaste Mandarin is a Chinese language training institute. We are committed towards promoting Mandarin among the student community & working professionals. We have strong experience in teaching children, coaching working professionals & in content development for virtual training programs.';
+  const OLD_MISSION =
+    'Our Mission is to teach Chinese language through easy and simple methods yet cover all important aspects of the language and to provide high quality Chinese language courses to non-native speakers.';
+  const OLD_VISION =
+    'Our Vision is to reach majority of people who are interested in learning Chinese language through modern educational technologies.';
   const about = getSetting('about');
-  if (about && about.intro === OLD_INTRO) {
-    setSetting('about', { ...about, intro: ABOUT_INTRO });
+  if (about) {
+    const updated = { ...about };
+    if (about.intro === OLD_INTRO) updated.intro = ABOUT_INTRO;
+    if (about.mission === OLD_MISSION) updated.mission = ABOUT_MISSION;
+    if (about.vision === OLD_VISION) updated.vision = ABOUT_VISION;
+    if (JSON.stringify(updated) !== JSON.stringify(about)) setSetting('about', updated);
   }
 }
 
