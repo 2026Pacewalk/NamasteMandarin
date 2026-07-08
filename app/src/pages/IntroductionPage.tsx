@@ -30,7 +30,7 @@ export default function IntroductionPage() {
           <SectionHeading
             kicker="The Language"
             title="About Mandarin"
-            subtitle="Mandarin is the most widely spoken language in the world with over 1.2 billion speakers. It is the official language of Mainland China, Taiwan & one of the official languages of Singapore — and one of the 6 official languages of the United Nations. No wonder millions of people are investing in learning it."
+            subtitle="Mandarin is the most widely spoken language in the world with over 1.2 billion speakers. It is the official language of Mainland China, Taiwan, one of the official languages of Singapore — and one of the 6 official languages of the United Nations. No wonder millions of people are investing in learning it."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-14">
