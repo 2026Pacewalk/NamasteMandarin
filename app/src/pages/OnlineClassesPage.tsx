@@ -7,7 +7,8 @@ export default function OnlineClassesPage() {
       kicker="Learn Anywhere"
       heading="Online Classes"
       heroBanner="/assets/banner-online-classes.jpg"
-      image="/assets/On-Line-Skype-Courses.png"
+      image="/assets/online-classes-video.jpg"
+      imageUncropped
       paragraphs={[
         'Online classes provide you with the advantage of taking classes from the comfort of your home & at your convenient time, without worrying much about the travelling part.',
         'Our online classes are one-on-one sessions & group sessions conducted through Skype/Google Hangouts (not pre-recorded videos). All study materials are shared online which can be accessed anytime at your convenient time.',
