@@ -21,7 +21,7 @@ export default function OnlineClassesPage() {
           Ready to start learning online?
         </h3>
         <p className="text-white/75 text-sm lg:text-base mt-2 max-w-xl mx-auto">
-          Access courses, live sessions &amp; study material on our online learning platform.
+          Contact Us today!!
         </p>
       </div>
     </ContentPage>
