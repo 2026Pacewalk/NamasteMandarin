@@ -2,16 +2,17 @@ interface PageHeroProps {
   title: string;
   image?: string;
   hideEyebrow?: boolean;
-  /** When set, renders this image as a full, uncropped banner (no overlay or overlaid title —
-   *  use for designed banners that already contain their own title and artwork). */
+  /** When set, renders this image as a designed banner (no overlay or overlaid title — use for
+   *  banners that already contain their own title and artwork). All banners share a fixed aspect
+   *  ratio so every page header is the same height regardless of the source image's dimensions. */
   banner?: string;
 }
 
 export default function PageHero({ title, image = '/assets/asset_7.jpg', hideEyebrow = false, banner }: PageHeroProps) {
   if (banner) {
     return (
-      <section className="w-full">
-        <img src={banner} alt={title} className="block w-full h-auto" />
+      <section className="w-full aspect-[1920/463] overflow-hidden">
+        <img src={banner} alt={title} className="block w-full h-full object-cover" />
       </section>
     );
   }
