@@ -19,6 +19,7 @@ import {
   Quote,
   Newspaper,
   BadgeCheck,
+  GraduationCap,
 } from 'lucide-react';
 
 type NavChild = { label: string; to: string };
@@ -58,6 +59,7 @@ const navItems: NavItem[] = [
       { label: 'Online Courses', to: 'https://namastemandarin.ongraphy.com/' },
     ],
   },
+  { label: 'HSK Exam', to: '/hsk-exam', icon: GraduationCap },
   { label: 'Testimonials', to: '/testimonials', icon: Quote },
   { label: 'Gallery', to: '/gallery', icon: Images },
   { label: 'News and Articles', to: '/news-and-articles', icon: Newspaper },

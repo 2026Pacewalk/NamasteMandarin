@@ -13,6 +13,7 @@ import YoungLearnersPage from './pages/YoungLearnersPage';
 import WorkingProfessionalsPage from './pages/WorkingProfessionalsPage';
 import CorporateTrainingPage from './pages/CorporateTrainingPage';
 import OnlineClassesPage from './pages/OnlineClassesPage';
+import HSKExamPage from './pages/HSKExamPage';
 import TestimonialsPage from './pages/TestimonialsPage';
 import GalleryPage from './pages/GalleryPage';
 import NewsPage from './pages/NewsPage';
@@ -49,6 +50,7 @@ function App() {
         <Route path="/online-classes" element={<OnlineClassesPage />} />
 
         {/* Other */}
+        <Route path="/hsk-exam" element={<HSKExamPage />} />
         <Route path="/testimonials" element={<TestimonialsPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/news-and-articles" element={<NewsPage />} />
