@@ -16,7 +16,7 @@ export default function AboutUsPage() {
 
   return (
     <>
-      <PageHero title="About Us" image="/assets/slider2.jpg" />
+      <PageHero title="About Us" banner="/assets/banner-about-us.jpg" />
 
       <section className="bg-white py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6 text-center">
