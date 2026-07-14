@@ -85,7 +85,12 @@ const faqs: { q: string; a: ReactNode }[] = [
 
 export default function HSKExamPage() {
   return (
-    <ContentPage title="HSK Exam" kicker="Chinese Proficiency Test" heading="Frequently Asked Questions">
+    <ContentPage
+      title="HSK Exam"
+      kicker="Chinese Proficiency Test"
+      heading="Frequently Asked Questions"
+      heroBanner="/assets/banner-hsk-exam.jpg"
+    >
       <div className="space-y-8">
         {faqs.map((item, i) => (
           <div key={item.q} className="flex gap-4 sm:gap-5">
