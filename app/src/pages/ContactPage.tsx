@@ -21,6 +21,9 @@ export default function ContactPage() {
     <>
       <PageHero title="Contact Us" image="/assets/hpchem-contact.jpg" />
 
+      {/* Contact form first */}
+      <ContactSection />
+
       {/* Contact details */}
       <section className="bg-white py-16 lg:py-20">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -70,8 +73,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      <ContactSection />
     </>
   );
 }
