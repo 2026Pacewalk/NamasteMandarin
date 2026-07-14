@@ -10,6 +10,8 @@ interface ContentPageProps {
   image?: string;
   /** Show the content image at its full height instead of cropping it to a fixed band. */
   imageUncropped?: boolean;
+  /** Portrait content image — show it in full, centered at a constrained width. */
+  imagePortrait?: boolean;
   banner?: string;
   /** Full designed banner (already contains its own title/artwork) — rendered uncropped, no overlay. */
   heroBanner?: string;
@@ -27,6 +29,7 @@ export default function ContentPage({
   kicker,
   image,
   imageUncropped = false,
+  imagePortrait = false,
   banner = '/assets/why-learn-chinese-stimulates-brain-function.png',
   heroBanner,
   hideEyebrow = false,
@@ -46,11 +49,15 @@ export default function ContentPage({
           )}
 
           {image && (
-            <figure className="relative rounded-3xl overflow-hidden shadow-[0_30px_60px_-30px_rgba(11,11,11,0.4)] ring-1 ring-black/5 mb-10">
+            <figure
+              className={`relative rounded-3xl overflow-hidden shadow-[0_30px_60px_-30px_rgba(11,11,11,0.4)] ring-1 ring-black/5 mb-10 ${
+                imagePortrait ? 'max-w-md mx-auto' : ''
+              }`}
+            >
               <img
                 src={image}
                 alt={heading || title}
-                className={`w-full ${imageUncropped ? 'h-auto' : 'max-h-[420px] object-cover'}`}
+                className={`w-full ${imageUncropped || imagePortrait ? 'h-auto' : 'max-h-[420px] object-cover'}`}
               />
             </figure>
           )}

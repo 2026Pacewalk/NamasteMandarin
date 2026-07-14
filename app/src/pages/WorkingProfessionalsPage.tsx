@@ -7,8 +7,8 @@ export default function WorkingProfessionalsPage() {
       kicker="For Professionals"
       heading="Programs designed for Working Professionals"
       heroBanner="/assets/banner-working-professionals.jpg"
-      image="/assets/working-professionals-certificate.jpg"
-      imageUncropped
+      image="/assets/working-professionals-photos.jpg"
+      imagePortrait
       paragraphs={[
         'China’s economy currently stands as the second largest in the world and continues to grow at an amazing pace. Learning to speak Mandarin Chinese is a great way to take advantage of this huge economic shift and opportunities, and to give oneself an advantage in the increasingly competitive business world.',
         'China has expanded its trade agreements to countries all over the world. With the Chinese market playing an influential part in every aspect of business around the globe, knowledge of the language will give you an unparalleled advantage in the global marketplace.',
