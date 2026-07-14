@@ -22,7 +22,7 @@ export default function HeroSection() {
   const prev = () => setCurrent((c) => (c - 1 + heroImages.length) % heroImages.length);
 
   return (
-    <section className="relative w-full aspect-[1600/738] overflow-hidden">
+    <section className="relative w-full aspect-[16/5] overflow-hidden">
       {/* Images */}
       {heroImages.map((img, i) => (
         <div
@@ -34,7 +34,7 @@ export default function HeroSection() {
           <img
             src={img}
             alt="Namaste Mandarin"
-            className={`w-full h-full object-cover ${i === current ? 'kenburns' : ''}`}
+            className="w-full h-full object-cover"
           />
         </div>
       ))}
