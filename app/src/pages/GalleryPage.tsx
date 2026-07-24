@@ -6,6 +6,7 @@ const DEFAULT_GALLERY = [
   'g10-big.jpg', 'g19-big.jpg', 'g21-big.jpg', 'g31-big.jpg', 'g32-big.jpg',
   'g33-big.jpg', 'g34-big.jpg', 'g35-big.jpg', 'g36-big.jpg', 'g37-big.jpg',
   'g38-big.jpg', 'g39-big.jpg', 'g40-big.jpg', 'g42-big.jpg',
+  'new-1.jpg', 'new-2.jpg', 'new-3.jpg',
 ].map((f, i) => ({ src: `/assets/gallery/${f}`, alt: `Namaste Mandarin gallery ${i + 1}` }));
 
 export default function GalleryPage() {

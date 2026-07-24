@@ -155,6 +155,20 @@ export function migrate() {
     if (about.vision === OLD_VISION) updated.vision = ABOUT_VISION;
     if (JSON.stringify(updated) !== JSON.stringify(about)) setSetting('about', updated);
   }
+
+  // Append newly added gallery images (idempotent — skips any already present).
+  const NEW_GALLERY = [
+    '/assets/gallery/new-1.jpg',
+    '/assets/gallery/new-2.jpg',
+    '/assets/gallery/new-3.jpg',
+  ];
+  const existingGallery = new Set(db.prepare('SELECT src FROM gallery').all().map((r) => r.src));
+  const missingGallery = NEW_GALLERY.filter((src) => !existingGallery.has(src));
+  if (missingGallery.length) {
+    let sort = db.prepare('SELECT COALESCE(MAX(sort), -1) AS m FROM gallery').get().m + 1;
+    const insert = db.prepare('INSERT INTO gallery (src, alt, sort) VALUES (?, ?, ?)');
+    missingGallery.forEach((src, i) => insert.run(src, 'Namaste Mandarin gallery', sort + i));
+  }
 }
 
 const seedTestimonials = [
@@ -184,6 +198,7 @@ const seedGallery = [
   'g10-big.jpg', 'g19-big.jpg', 'g21-big.jpg', 'g31-big.jpg', 'g32-big.jpg',
   'g33-big.jpg', 'g34-big.jpg', 'g35-big.jpg', 'g36-big.jpg', 'g37-big.jpg',
   'g38-big.jpg', 'g39-big.jpg', 'g40-big.jpg', 'g42-big.jpg',
+  'new-1.jpg', 'new-2.jpg', 'new-3.jpg',
 ].map((f) => `/assets/gallery/${f}`);
 
 const seedCertificates = [
