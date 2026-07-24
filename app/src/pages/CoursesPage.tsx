@@ -33,7 +33,7 @@ const courses = [
 export default function CoursesPage() {
   return (
     <>
-      <PageHero title="Courses" image="/assets/why-learn-chinese-stimulates-brain-function.png" />
+      <PageHero title="Courses" banner="/assets/banner-courses.jpg" />
 
       <section className="bg-white py-16 lg:py-24">
         <div className="max-w-5xl mx-auto px-6 lg:px-12">
